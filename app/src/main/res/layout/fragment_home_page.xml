@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/main_bg"
+    android:padding="15dp"
+    tools:context=".fragment.HomePageFragment">
+
+    <androidx.appcompat.widget.AppCompatEditText
+        android:id="@+id/edSearch"
+        android:layout_width="237dp"
+        android:layout_height="60dp"
+        android:background="@drawable/search_corner"
+        android:drawableStart="@drawable/google"
+        android:drawablePadding="5dp"
+        android:textColor="@color/white"
+        android:hint="@string/search"
+        android:paddingStart="20dp"
+        android:textColorHint="@color/hint_color"
+        app:layout_constraintEnd_toStartOf="@id/imgFilter"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/imgFilter"
+        android:layout_width="63dp"
+        android:layout_height="60dp"
+        android:background="@drawable/filter_bg"
+        android:scaleType="centerInside"
+        android:src="@drawable/filter"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/edSearch"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rcChatItem"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="10dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/edSearch" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
