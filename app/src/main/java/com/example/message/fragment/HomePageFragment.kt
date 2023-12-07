@@ -22,6 +22,10 @@ class HomePageFragment : BaseFragment<FragmentHomePageBinding>(FragmentHomePageB
     override fun clickListener() {
         binding.apply {
 
+            imgFilter.setOnClickListener {
+                viewModel.isActive = !viewModel.isActive
+            }
+
             edSearch.addTextChangedListener {
                 filterList(it.toString())
             }

@@ -12,10 +12,12 @@ import java.util.Locale
 
 class FragmentViewModel : ViewModel() {
 
-    var originalList = mutableSetOf<ChatItem>()
+    private var originalList = mutableSetOf<ChatItem>()
     private val _chatListFlow: MutableStateFlow<List<ChatItem>> = MutableStateFlow(emptyList())
     val chatListFlow: Flow<List<ChatItem>> get() = _chatListFlow.asStateFlow()
     private val _queryFlow = MutableStateFlow("")
+    var isActive: Boolean = false
+
 
     init {
         loadChatItems()
@@ -37,8 +39,11 @@ class FragmentViewModel : ViewModel() {
     }
 
     fun updateQuery(query: String) {
-        _queryFlow.value = query
-        filterChatList()
+        if (isActive) {
+            _queryFlow.value = query
+            filterChatList()
+        }
+
     }
 
     private fun filterChatList() {
