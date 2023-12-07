@@ -24,9 +24,7 @@ class ChatRecyclerAdapter : ListAdapter<ChatItem, ChatRecyclerAdapter.ChatViewHo
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ChatViewHolder {
         return ChatViewHolder(
             RecyclerChatItemBinding.inflate(
-                LayoutInflater.from(parent.context),
-                parent,
-                false
+                LayoutInflater.from(parent.context), parent, false
             )
         )
     }
@@ -40,34 +38,35 @@ class ChatRecyclerAdapter : ListAdapter<ChatItem, ChatRecyclerAdapter.ChatViewHo
 
         fun bind() = with(binding) {
             val item = currentList[adapterPosition]
-            Glide
-                .with(root.context)
-                .load(item.image)
-                .centerCrop()
+            Glide.with(root.context).load(item.image).centerCrop()
                 .placeholder(R.drawable.ic_launcher_background)
-                .error(R.drawable.ic_launcher_foreground)
-                .into(imgProfile)
+                .error(R.drawable.ic_launcher_foreground).into(imgProfile)
 
             tvFullName.text = item.owner
             tvMessage.text = item.lastMessage
-            when (item.lastMessageType) {
-                MessageType.FILE.toString() -> {
+            when (item.lastMessageType.lowercase()) {
+                MessageType.FILE.toString().lowercase() -> {
                     imgMessageType.visibility = View.VISIBLE
                     imgMessageType.setImageResource(R.drawable.attachment)
+                    tvMessage.text = MessageType.FILE.value
                 }
-                MessageType.VOICE.toString() -> {
+
+                MessageType.VOICE.toString().lowercase() -> {
                     imgMessageType.visibility = View.VISIBLE
                     imgMessageType.setImageResource(R.drawable.recorder)
+                    tvMessage.text = MessageType.VOICE.value
                 }
-                MessageType.VOICE.toString() -> {
+
+                MessageType.TEXT.toString() -> {
                     imgMessageType.visibility = View.GONE
+
                 }
             }
             tvTime.text = item.lastActive
             if (item.unreadMessages > 0) {
                 tvUncheckMessage.visibility = View.VISIBLE
                 tvUncheckMessage.text = item.unreadMessages.toString()
-            }else {
+            } else {
                 tvUncheckMessage.visibility = View.GONE
             }
         }

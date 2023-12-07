@@ -15,8 +15,8 @@ data class ChatItem(
     @Json(name = "laste_message_type") val lastMessageType: String
 )
 
-enum class MessageType {
-    TEXT,
-    FILE,
-    VOICE
+enum class MessageType(val value: String) {
+    TEXT(""),
+    FILE("Sent an attachment"),
+    VOICE("Sent a voice message")
 }

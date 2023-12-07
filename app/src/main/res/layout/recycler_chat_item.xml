@@ -4,8 +4,8 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="@color/main_bg"
-    android:paddingTop="10dp"
     android:paddingStart="10dp"
+    android:paddingTop="10dp"
     android:paddingEnd="10dp">
 
     <de.hdodenhof.circleimageview.CircleImageView
@@ -30,30 +30,29 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintEnd_toStartOf="@id/tvTime"
         app:layout_constraintBottom_toBottomOf="@id/imgProfile"
+        app:layout_constraintEnd_toStartOf="@id/tvTime"
         app:layout_constraintStart_toStartOf="@id/tvFullName"
         app:layout_constraintTop_toBottomOf="@id/tvFullName">
 
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/imgMessageType"
             android:layout_width="wrap_content"
-            android:visibility="gone"
-            android:layout_marginEnd="10dp"
             android:layout_height="wrap_content"
-            android:background="@drawable/recorder"/>
+            android:layout_marginEnd="10dp"
+            android:background="@drawable/recorder"
+            android:visibility="gone" />
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/tvMessage"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:maxLines="1"
             android:ellipsize="end"
+            android:maxLines="1"
             android:textColor="@color/white"
             android:textSize="14sp" />
 
     </androidx.appcompat.widget.LinearLayoutCompat>
-
 
 
     <androidx.appcompat.widget.AppCompatTextView
@@ -71,21 +70,22 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@drawable/oval"
-        android:visibility="gone"
         android:gravity="center"
-        app:layout_constraintBottom_toBottomOf="@id/linearMessage"
         android:textColor="@color/white"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="@id/linearMessage"
         app:layout_constraintEnd_toEndOf="@id/tvTime"
         app:layout_constraintTop_toBottomOf="@id/tvTime" />
 
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/imgLine"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="1dp"
         android:layout_marginTop="10dp"
-        android:background="@color/white"
-        app:layout_constraintTop_toBottomOf="@id/imgProfile"
-        app:layout_constraintStart_toEndOf="@id/imgProfile"
-        app:layout_constraintBottom_toBottomOf="parent"/>
+        android:background="@color/line"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@id/tvFullName"
+        app:layout_constraintTop_toBottomOf="@id/imgProfile" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
